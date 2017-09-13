@@ -4,7 +4,7 @@
 /* @var $popupId string */
 
 ?>
-<div id="<?= $popupId ?>" class="<?= $popupCssClass ?>">
+<div id="<?= $popupId ?>" class="<?= $popupCssClass ?> mfp-hide">
 <?php foreach ($messages as $message): ?>
     <p class="<?= $message['cssClass'] ?>"><?= $message['message'] ?></p>
 <?php endforeach; ?>
