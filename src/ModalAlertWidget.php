@@ -22,7 +22,7 @@ use yii\bootstrap\Widget;
  *     Yii::$app->session->setFlash('success', 'My Message');
  *
  * In your layout view show this widget:
- *     <?= ModalAlert::widget(['popupCssClass' => 'my-popup-class(es)']) ?>
+ *     <?= ModalAlertWidget::widget(['popupCssClass' => 'my-popup-class(es)']) ?>
  *
  * That's all :)
  */
