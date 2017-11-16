@@ -4,6 +4,7 @@ Yii2 Modal Alert Widget
 This widget show bootstrap modal or magnific popup when you set session flash message.
 
 For magnific popups you must install magnific js before using this widget - http://dimsemenov.com/plugins/magnific-popup/
+
 And for bootstrap modals of course you must set up bootstrap in your project.
 
 Installation
