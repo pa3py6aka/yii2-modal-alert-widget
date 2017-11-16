@@ -28,6 +28,14 @@ use yii\bootstrap\Widget;
  */
 class ModalAlertWidget extends Widget
 {
+    const TYPE_BOOTSTRAP = 'bootstrap';
+    const TYPE_MAGNIFIC = 'magnific';
+
+    /**
+     * @var string Type of modal, it may be 'bootstrap' or 'magnific'
+     */
+    public $type = self::TYPE_BOOTSTRAP;
+
     /**
      * @var string CSS class for main popup block
      */
@@ -55,9 +63,9 @@ class ModalAlertWidget extends Widget
     ];
 
     /**
-     * @var string View path for render popup.
+     * @var string Path to view for render popup, may be use aliases
      */
-    public $alertViewPath = "modal-alert-widget";
+    public $popupView;
 
     public function run()
     {
@@ -90,7 +98,8 @@ class ModalAlertWidget extends Widget
 
     private function renderModal(array $messages)
     {
-        return $this->render($this->alertViewPath, [
+        $path = $this->popupView ?: $this->type . '-modal';
+        return $this->render($path, [
             'messages' => $messages,
             'popupCssClass' => $this->popupCssClass,
             'popupId' => $this->popupId
@@ -99,7 +108,11 @@ class ModalAlertWidget extends Widget
 
     private function showModal()
     {
-        $js = <<<JS
+        $bootstrapJs = <<<JS
+$('#{$this->popupId}').modal();
+JS;
+
+        $magnificJs = <<<JS
 $.magnificPopup.open({
     items: {
         src: '#{$this->popupId}',
@@ -108,6 +121,6 @@ $.magnificPopup.open({
     }
 });
 JS;
-        $this->view->registerJs($js);
+        $this->view->registerJs($this->type == self::TYPE_BOOTSTRAP ? $bootstrapJs : $magnificJs);
     }
 }
