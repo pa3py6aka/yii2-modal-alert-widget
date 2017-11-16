@@ -50,8 +50,8 @@ Available options
 
 `popupView` - Path to your custom view for render modal(popup). You can copy original view from `vendor/pa3py6aka/yii2-modal-alert-widget/src/views` and customize it.
 
-###Example
-----------
+Example
+-------
 ```
 <?= ModalAlert::widget([
     'popupCssClass' => 'my-custom-class',
