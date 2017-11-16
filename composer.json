@@ -3,7 +3,7 @@
   "description": "Modal alert widget for Yii2",
   "type": "yii2-extension",
   "keywords": ["yii2", "yii 2", "modal alert"],
-  "license": "BSD-3-Clause",
+  "license": "MIT",
   "authors": [
     {
       "name": "Alexander Savelyev",
