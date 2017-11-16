@@ -1,7 +1,5 @@
 <?php
 /**
- * This file is part of the pa3py6aka/yii2-modal-alert-widget library
- *
  * @copyright Copyright (c) Alexander Savelyev <http://weblancer.net/users/alexsava>
  * @license https://github.com/pa3py6aka/yii2-modal-alert-widget/blob/master/LICENSE.md
  * @link https://github.com/pa3py6aka/yii2-modal-alert-widget
@@ -13,20 +11,22 @@ use Yii;
 use yii\bootstrap\Widget;
 
 /**
- * This widget show magnific popup when you set session flash message
- * You must install magnific popup before using this widget - http://dimsemenov.com/plugins/magnific-popup/
+ * This widget show bootstrap modal or magnific popup when you set session flash message
+ * For magnific popups you must install magnific js before using this widget - http://dimsemenov.com/plugins/magnific-popup/
  *
  * Example:
  * ----------
  * in controller set flash message:
  *     Yii::$app->session->setFlash('success', 'My Message');
+ * or you can set flash this title:
+ *     Yii::$app->session->setFlash('success', [['My title', 'My Message']]);
  *
  * In your layout view show this widget:
- *     <?= ModalAlertWidget::widget(['popupCssClass' => 'my-popup-class(es)']) ?>
+ *     <?= ModalAlertWidget::widget(['popupCssClass' => 'my-popup-class']) ?>
  *
  * That's all :)
  */
-class ModalAlertWidget extends Widget
+class ModalAlert extends Widget
 {
     const TYPE_BOOTSTRAP = 'bootstrap';
     const TYPE_MAGNIFIC = 'magnific';
@@ -73,6 +73,7 @@ class ModalAlertWidget extends Widget
         $flashes = $session->getAllFlashes();
         $messages = [];
         $show = false;
+        $title = null;
 
         foreach ($flashes as $type => $data) {
             $cssClass = isset($this->alertTypes[$type]) ? $this->alertTypes[$type] : 'alert-info';
@@ -81,9 +82,16 @@ class ModalAlertWidget extends Widget
                 if ($message) {
                     $show = true;
                 }
+                if (is_array($message)) {
+                    if (count($message) > 1) {
+                        $mTitle = array_shift($message);
+                        $title = $title ?: $mTitle;
+                    }
+                    $message = array_shift($message);
+                }
                 $messages[] = [
                     'cssClass' => $cssClass,
-                    'message' => $message
+                    'message' => $message,
                 ];
             }
 
@@ -91,18 +99,19 @@ class ModalAlertWidget extends Widget
         }
 
         if ($show) {
-            echo $this->renderModal($messages);
+            echo $this->renderModal($messages, $title);
             $this->showModal();
         }
     }
 
-    private function renderModal(array $messages)
+    private function renderModal(array $messages, $title)
     {
         $path = $this->popupView ?: $this->type . '-modal';
         return $this->render($path, [
             'messages' => $messages,
             'popupCssClass' => $this->popupCssClass,
-            'popupId' => $this->popupId
+            'popupId' => $this->popupId,
+            'title' => $title,
         ]);
     }
 

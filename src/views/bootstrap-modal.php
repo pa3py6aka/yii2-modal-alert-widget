@@ -1,4 +1,5 @@
 <?php
+/* @var $title string|null */
 /* @var $messages array */
 /* @var $popupCssClass string */
 /* @var $popupId string */
@@ -8,13 +9,15 @@
 <div class="modal fade <?= $popupCssClass ?>" id="<?= $popupId ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="<?= $popupId ?>" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <!--<h4 class="modal-title" id="myModalLabel">Modal title</h4>-->
+            <div class="modal-header <?= $messages[0]['cssClass'] ?>">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <?php if ($title): ?>
+                    <h4 class="modal-title" id="myModalLabel"><?= $title ?></h4>
+                <?php endif; ?>
             </div>
             <div class="modal-body">
                 <?php foreach ($messages as $message): ?>
-                    <p class="<?= $message['cssClass'] ?>"><?= $message['message'] ?></p>
+                    <p><?= $message['message'] ?></p>
                 <?php endforeach; ?>
             </div>
             <!--<div class="modal-footer">
