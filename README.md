@@ -61,7 +61,7 @@ Example
 ```
 Then, set flash:
 ```
-Yii::$app->session->setFlash('error', [['Terrible mistake!', 'Sorry, you can't sign up, because your karma is very small']]);
+Yii::$app->session->setFlash('error', [['Terrible mistake!', "Sorry, you can't sign up, because your karma is very small"]]);
 ```
 And we get:
 ![Alt text](http://res.cloudinary.com/pa3py6aka/image/upload/v1510873911/example-screen_dzqvko.png "Example modal")
