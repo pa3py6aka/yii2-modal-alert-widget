@@ -1,6 +1,11 @@
 Yii2 Modal Alert Widget
 =======================
 
+[![License](https://poser.pugx.org/pa3py6aka/yii2-modal-alert-widget/license)](https://packagist.org/packages/pa3py6aka/yii2-modal-alert-widget)
+[![Total Downloads](https://poser.pugx.org/pa3py6aka/yii2-modal-alert-widget/downloads)](https://packagist.org/packages/pa3py6aka/yii2-modal-alert-widgetr)
+[![Monthly Downloads](https://poser.pugx.org/pa3py6aka/yii2-modal-alert-widget/d/monthly)](https://packagist.org/packages/pa3py6aka/yii2-modal-alert-widget)
+[![Daily Downloads](https://poser.pugx.org/pa3py6aka/yii2-modal-alert-widget/d/daily)](https://packagist.org/packages/pa3py6aka/yii2-modal-alert-widgetr)
+
 This widget show bootstrap modal or magnific popup when you set session flash message.
 
 For magnific popups you must install magnific js before using this widget - http://dimsemenov.com/plugins/magnific-popup/
