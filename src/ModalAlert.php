@@ -67,6 +67,17 @@ class ModalAlert extends Widget
      */
     public $popupView;
 
+    /**
+     * @var int Time in seconds after which the modal window will be closed (0 means that modal will be closed only by user)
+     */
+    public $showTime = 0;
+
+    public function init()
+    {
+        parent::init();
+        $this->showTime = ((int) $this->showTime) * 1000;
+    }
+
     public function run()
     {
         $session = Yii::$app->session;
@@ -117,10 +128,13 @@ class ModalAlert extends Widget
 
     private function showModal()
     {
+        $bootstrapShowTimer = $this->showTime > 0 ? "setTimeout(\"$('#{$this->popupId}').modal('hide');\", {$this->showTime});" : "";
         $bootstrapJs = <<<JS
 $('#{$this->popupId}').modal();
+{$bootstrapShowTimer}
 JS;
 
+        $magnificShowTimer = $this->showTime > 0 ? "setTimeout(\"$.magnificPopup.close();\", {$this->showTime});" : "";
         $magnificJs = <<<JS
 $.magnificPopup.open({
     items: {
