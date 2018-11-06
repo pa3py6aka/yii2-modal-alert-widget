@@ -68,7 +68,7 @@ class ModalAlert extends Widget
     public $popupView;
 
     /**
-     * @var int Time in seconds after which the modal window will be closed (0 means that modal will be closed only by user)
+     * @var int Time in seconds after which the modal window will be automatically closed (0 means that modal will be closed only by user)
      */
     public $showTime = 0;
 
