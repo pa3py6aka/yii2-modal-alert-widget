@@ -39,17 +39,17 @@ class ModalAlert extends Widget
     /**
      * @var string CSS class for main popup block
      */
-    public $popupCssClass = "";
+    public $popupCssClass = '';
 
     /**
      * @var string Id for main popup block
      */
-    public $popupId = "pa3py6aka-modal-alert";
+    public $popupId = 'pa3py6aka-modal-alert';
 
     /**
      * @var string Magnific popup type
      */
-    public $magnificPopupType = "inline";
+    public $magnificPopupType = 'inline';
 
     /**
      * @var array List of CSS classes for flash-types
@@ -75,7 +75,7 @@ class ModalAlert extends Widget
     public function init()
     {
         parent::init();
-        $this->showTime = ((int) $this->showTime) * 1000;
+        $this->showTime = (int) $this->showTime * 1000;
     }
 
     public function run()
@@ -144,6 +144,6 @@ $.magnificPopup.open({
     }
 });
 JS;
-        $this->view->registerJs($this->type == self::TYPE_BOOTSTRAP ? $bootstrapJs : $magnificJs);
+        $this->view->registerJs($this->type === self::TYPE_BOOTSTRAP ? $bootstrapJs : $magnificJs);
     }
 }

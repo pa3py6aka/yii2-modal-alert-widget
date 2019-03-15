@@ -2,9 +2,9 @@ Yii2 Modal Alert Widget
 =======================
 
 [![License](https://poser.pugx.org/pa3py6aka/yii2-modal-alert-widget/license)](https://packagist.org/packages/pa3py6aka/yii2-modal-alert-widget)
-[![Total Downloads](https://poser.pugx.org/pa3py6aka/yii2-modal-alert-widget/downloads)](https://packagist.org/packages/pa3py6aka/yii2-modal-alert-widgetr)
+[![Total Downloads](https://poser.pugx.org/pa3py6aka/yii2-modal-alert-widget/downloads)](https://packagist.org/packages/pa3py6aka/yii2-modal-alert-widget)
 [![Monthly Downloads](https://poser.pugx.org/pa3py6aka/yii2-modal-alert-widget/d/monthly)](https://packagist.org/packages/pa3py6aka/yii2-modal-alert-widget)
-[![Daily Downloads](https://poser.pugx.org/pa3py6aka/yii2-modal-alert-widget/d/daily)](https://packagist.org/packages/pa3py6aka/yii2-modal-alert-widgetr)
+[![Daily Downloads](https://poser.pugx.org/pa3py6aka/yii2-modal-alert-widget/d/daily)](https://packagist.org/packages/pa3py6aka/yii2-modal-alert-widget)
 
 This widget show bootstrap modal or magnific popup when you set session flash message.
 
@@ -34,11 +34,11 @@ In your layout view show this widget:
 ```
 <?php use pa3py6aka\yii2\ModalAlert; ?>
 ...
-<?php echo ModalAlert::widget() ?>
+<?php ModalAlert::widget() ?>
 ```
 For magnific popup:
 ```
-<?php echo ModalAlert::widget(['type' => ModalAlert::TYPE_MAGNIFIC]) ?>
+<?php ModalAlert::widget(['type' => ModalAlert::TYPE_MAGNIFIC]) ?>
 ```
 You can set flashes with titles:
 ```
