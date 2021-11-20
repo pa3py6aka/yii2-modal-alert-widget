@@ -9,6 +9,8 @@ Yii2 Modal Alert Widget
 
 This widget show bootstrap modal or magnific popup when you set session flash message.
 
+Supports all bootstrap versions - 3,4 and 5.
+
 For magnific popups you must install magnific js before using this widget - http://dimsemenov.com/plugins/magnific-popup/
 
 And for bootstrap modals of course you must set up bootstrap in your project.
@@ -21,7 +23,7 @@ composer require pa3py6aka/yii2-modal-alert-widget
 ```
 or add
 ```
-"pa3py6aka/yii2-modal-alert-widget": "*"
+"pa3py6aka/yii2-modal-alert-widget": "^1.4"
 ```
 to the require section of your composer.json file.
 
@@ -35,11 +37,11 @@ In your layout view show this widget:
 ```
 <?php use pa3py6aka\yii2\ModalAlert; ?>
 ...
-<?php ModalAlert::widget() ?>
+<?= ModalAlert::widget() ?>
 ```
-For magnific popup:
+By default widget using bootstrap 4 modal. Use `type` property to switch to another modal type:
 ```
-<?php ModalAlert::widget(['type' => ModalAlert::TYPE_MAGNIFIC]) ?>
+<?p= ModalAlert::widget(['type' => ModalAlert::TYPE_BOOTSTRAP_5]) ?>
 ```
 You can set flashes with titles:
 ```
@@ -47,7 +49,10 @@ Yii::$app->session->setFlash('error', [['My Title', 'My Message']]);
 ```
 Available options
 -----------------
-`type` - Type of alert - bootstrap modal or magnific popup, defaults to bootstrap.
+`type` - Type of alert - bootstrap 3/4/5 jquery or magnific popup, defaults to bootstrap 4. 
+         Bootstrap 5 type has two versions - with jQuery enabled and without jQuery.
+         Use declared constants to set type (like `ModalAlert::TYPE_BOOTSTRAP_5_JQUERY`). 
+         See available types in source code.
 
 `popupCssClass` - CSS class for modal(popup).
 

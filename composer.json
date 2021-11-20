@@ -15,8 +15,7 @@
         "source": "https://github.com/pa3py6aka/yii2-modal-alert-widget"
     },
     "require": {
-        "yiisoft/yii2": "~2.0.13",
-        "yiisoft/yii2-bootstrap": "^2.0"
+        "yiisoft/yii2": "~2.0.13"
     },
     "repositories": [
         {

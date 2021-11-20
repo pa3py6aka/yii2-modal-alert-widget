@@ -8,7 +8,8 @@
 namespace pa3py6aka\yii2;
 
 use Yii;
-use yii\bootstrap\Widget;
+use yii\base\InvalidArgumentException;
+use yii\base\Widget;
 
 /**
  * This widget show bootstrap modal or magnific popup when you set session flash message
@@ -28,13 +29,28 @@ use yii\bootstrap\Widget;
  */
 class ModalAlert extends Widget
 {
-    const TYPE_BOOTSTRAP = 'bootstrap';
+    /* @deprecated Use TYPE_BOOTSTRAP_3 instead */
+    const TYPE_BOOTSTRAP = 'bs3';
+
+    /* Bootstrap 3 modal */
+    const TYPE_BOOTSTRAP_3 = 'bs3';
+
+    /* Bootstrap 4 modal (by default) */
+    const TYPE_BOOTSTRAP_4 = 'bs4';
+
+    /* Bootstrap 5 modal without jQuery */
+    const TYPE_BOOTSTRAP_5 = 'bs5';
+
+    /* Bootstrap 5 modal with jQuery enabled */
+    const TYPE_BOOTSTRAP_5_JQUERY = 'bs5-jquery';
+
+    /* Magnific popup modal */
     const TYPE_MAGNIFIC = 'magnific';
 
     /**
-     * @var string Type of modal, it may be 'bootstrap' or 'magnific'
+     * @var string Type of modal - bootstrap3,4 or magnific-popup
      */
-    public $type = self::TYPE_BOOTSTRAP;
+    public $type = self::TYPE_BOOTSTRAP_4;
 
     /**
      * @var string CSS class for main popup block
@@ -75,6 +91,11 @@ class ModalAlert extends Widget
     public function init()
     {
         parent::init();
+
+        if (!$this->type) {
+            throw new InvalidArgumentException('Modal type is required');
+        }
+
         $this->showTime = (int) $this->showTime * 1000;
     }
 
@@ -110,14 +131,20 @@ class ModalAlert extends Widget
         }
 
         if ($show) {
-            echo $this->renderModal($messages, $title);
             $this->showModal();
+            return $this->renderModal($messages, $title);
         }
+
+        return '';
     }
 
     private function renderModal(array $messages, $title)
     {
         $path = $this->popupView ?: $this->type . '-modal';
+        if ($this->type === self::TYPE_BOOTSTRAP_5_JQUERY && ! $this->popupView) {
+            $path = self::TYPE_BOOTSTRAP_5 . '-modal';
+        }
+
         return $this->render($path, [
             'messages' => $messages,
             'popupCssClass' => $this->popupCssClass,
@@ -128,14 +155,29 @@ class ModalAlert extends Widget
 
     private function showModal()
     {
-        $bootstrapShowTimer = $this->showTime > 0 ? "setTimeout(\"$('#{$this->popupId}').modal('hide');\", {$this->showTime});" : "";
-        $bootstrapJs = <<<JS
-$('#{$this->popupId}').modal();
-{$bootstrapShowTimer}
+        // Bootstrap 3/4/5 with jQuery
+        if (in_array($this->type, [self::TYPE_BOOTSTRAP, self::TYPE_BOOTSTRAP_3, self::TYPE_BOOTSTRAP_4, self::TYPE_BOOTSTRAP_5_JQUERY])) {
+            $closeTimer = $this->showTime > 0 ? "setTimeout(\"$('#{$this->popupId}').modal('hide');\", {$this->showTime});" : '';
+            $js = <<<JS
+$('#{$this->popupId}').modal('show');
+{$closeTimer}
 JS;
+        }
 
-        $magnificShowTimer = $this->showTime > 0 ? "setTimeout(\"$.magnificPopup.close();\", {$this->showTime});" : "";
-        $magnificJs = <<<JS
+        // Bootstrap 5 without jQuery
+        if ($this->type === self::TYPE_BOOTSTRAP_5) {
+            $closeTimer = $this->showTime > 0 ? "setTimeout(\"alertModal.hide();\", {$this->showTime});" : '';
+            $js = <<<JS
+var alertModal = new bootstrap.Modal(document.getElementById('{$this->popupId}'));
+alertModal.show();
+{$closeTimer}
+JS;
+        }
+
+        // Magnific popup
+        if ($this->type === self::TYPE_MAGNIFIC) {
+            $closeTimer = $this->showTime > 0 ? "setTimeout(\"$.magnificPopup.close();\", {$this->showTime});" : '';
+            $js = <<<JS
 $.magnificPopup.open({
     items: {
         src: '#{$this->popupId}',
@@ -143,7 +185,10 @@ $.magnificPopup.open({
         midClick: true
     }
 });
+{$closeTimer}
 JS;
-        $this->view->registerJs($this->type === self::TYPE_BOOTSTRAP ? $bootstrapJs : $magnificJs);
+        }
+
+        $this->view->registerJs($js);
     }
 }

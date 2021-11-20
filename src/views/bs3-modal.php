@@ -1,11 +1,11 @@
 <?php
+
 /* @var $title string|null */
 /* @var $messages array */
 /* @var $popupCssClass string */
 /* @var $popupId string */
-
 ?>
-<!-- Modal -->
+<!-- Alert Modal -->
 <div class="modal fade <?= $popupCssClass ?>" id="<?= $popupId ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -20,10 +20,6 @@
                     <p><?= $message['message'] ?></p>
                 <?php endforeach; ?>
             </div>
-            <!--<div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>-->
         </div>
     </div>
 </div>

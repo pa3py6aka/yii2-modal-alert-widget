@@ -1,9 +1,9 @@
 <?php
+
 /* @var $title string|null */
 /* @var $messages array */
 /* @var $popupCssClass string */
 /* @var $popupId string */
-
 ?>
 <div id="<?= $popupId ?>" class="<?= $popupCssClass ?> mfp-hide" style="position:relative;">
     <?php if ($title): ?>
