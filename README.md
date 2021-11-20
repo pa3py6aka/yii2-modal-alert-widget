@@ -1,6 +1,7 @@
 Yii2 Modal Alert Widget
 =======================
 
+[![Latest Stable Version](https://img.shields.io/packagist/v/pa3py6aka/yii2-modal-alert-widget.svg)](https://packagist.org/packages/pa3py6aka/yii2-modal-alert-widget)
 [![License](https://poser.pugx.org/pa3py6aka/yii2-modal-alert-widget/license)](https://packagist.org/packages/pa3py6aka/yii2-modal-alert-widget)
 [![Total Downloads](https://poser.pugx.org/pa3py6aka/yii2-modal-alert-widget/downloads)](https://packagist.org/packages/pa3py6aka/yii2-modal-alert-widget)
 [![Monthly Downloads](https://poser.pugx.org/pa3py6aka/yii2-modal-alert-widget/d/monthly)](https://packagist.org/packages/pa3py6aka/yii2-modal-alert-widget)

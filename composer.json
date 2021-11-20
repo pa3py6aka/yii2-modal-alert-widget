@@ -1,31 +1,38 @@
 {
-  "name": "pa3py6aka/yii2-modal-alert-widget",
-  "description": "Modal alert widget for Yii2",
-  "type": "yii2-extension",
-  "keywords": ["yii2", "yii 2", "modal alert"],
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Alexander Savelyev",
-      "homepage": "http://weblancer.net/users/alexsava"
+    "name": "pa3py6aka/yii2-modal-alert-widget",
+    "description": "Modal alert widget for Yii2",
+    "type": "yii2-extension",
+    "keywords": ["yii2", "yii 2", "modal alert"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexander Savelyev",
+            "homepage": "http://weblancer.net/users/alexsava"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/pa3py6aka/yii2-modal-alert-widget/issues?state=open",
+        "source": "https://github.com/pa3py6aka/yii2-modal-alert-widget"
+    },
+    "require": {
+        "yiisoft/yii2": "~2.0.13",
+        "yiisoft/yii2-bootstrap": "^2.0"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "pa3py6aka\\yii2\\": "src/"
+        }
+    },
+    "extra": {
+        "asset-installer-paths": {
+            "npm-asset-library": "vendor/npm-asset",
+            "bower-asset-library": "vendor/bower-asset"
+        }
     }
-  ],
-  "support": {
-    "issues": "https://github.com/pa3py6aka/yii2-modal-alert-widget/issues?state=open",
-    "source": "https://github.com/pa3py6aka/yii2-modal-alert-widget"
-  },
-  "require": {
-    "yiisoft/yii2": "~2.0"
-  },
-  "autoload": {
-    "psr-4": {
-      "pa3py6aka\\yii2\\": "src/"
-    }
-  },
-  "extra": {
-    "asset-installer-paths": {
-      "npm-asset-library": "vendor/npm-asset",
-      "bower-asset-library": "vendor/bower-asset"
-    }
-  }
 }
