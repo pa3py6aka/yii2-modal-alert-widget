@@ -64,7 +64,7 @@ Available options
 
 `showTime` - Time in seconds after which the modal window will be automatically closed (`0` means that modal will be closed only by user)
 
-`modalSize` - Bootstrap Modal size, available size `modal-sm`, `modal-lg`, `modal-xl`, default to `''`
+`modalSize` - Bootstrap Modal size, available size `modal-sm`, `modal-lg`, `modal-xl`, and `modal-fullscreen` (for Bootstrap 5 only), default to `''`
 
 Example
 -------
