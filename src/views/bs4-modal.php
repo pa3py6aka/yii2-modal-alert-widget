@@ -7,7 +7,7 @@
 ?>
 <!-- Alert Modal -->
 <div class="modal fade <?= $popupCssClass ?>" id="<?= $popupId ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog <?= $modalSize ?>" role="document">
         <div class="modal-content">
             <div class="modal-header <?= $messages[0]['cssClass'] ?>">
                 <h5 class="modal-title" id="myModalLabel"><?= $title ?></h5>

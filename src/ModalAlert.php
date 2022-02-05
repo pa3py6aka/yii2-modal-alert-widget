@@ -88,6 +88,11 @@ class ModalAlert extends Widget
      */
     public $showTime = 0;
 
+    /**
+     * @var string modal size
+     */
+    public $modalSize = '';
+
     public function init()
     {
         parent::init();
@@ -150,6 +155,7 @@ class ModalAlert extends Widget
             'popupCssClass' => $this->popupCssClass,
             'popupId' => $this->popupId,
             'title' => $title,
+            'modalSize' => $this->modalSize,
         ]);
     }
 
